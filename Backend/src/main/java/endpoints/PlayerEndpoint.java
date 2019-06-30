@@ -8,8 +8,8 @@ import utils.serialization.Serializer;
 import utils.serialization.SerializerSingleton;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
 
 @Path("/players")
 public class PlayerEndpoint {
@@ -18,20 +18,16 @@ public class PlayerEndpoint {
 
     @GET
     @Path("test")
-    public Response testConnection()
-    {
+    public Response testConnection() {
         return ResponseBuilder.response("Player Endpoint Connection Successful");
     }
 
     @GET
     @Produces("application/json")
     public Response getAllPlayers() {
-        ArrayList<Player> players = new ArrayList<>(playerRepository.getAllPlayers());
         try {
-            return ResponseBuilder.response(serializer.serialize(players));
-        }
-        catch (Exception e)
-        {
+            return ResponseBuilder.response(serializer.serialize(playerRepository.getAllPlayers()));
+        } catch (Exception e) {
             return ResponseBuilder.response("Something went wrong", 500);
         }
     }
@@ -41,9 +37,8 @@ public class PlayerEndpoint {
     @Produces("application/json")
     public Response getPlayer(@PathParam("id") String jsonID) {
         int id = Integer.parseInt(jsonID);
-        Player player = playerRepository.getPlayer(id);
         try {
-            return ResponseBuilder.response(serializer.serialize(player));
+            return ResponseBuilder.response(serializer.serialize(playerRepository.getPlayer(id)));
         } catch (Exception e) {
 
             return ResponseBuilder.response("Something went wrong", 500);
@@ -51,13 +46,14 @@ public class PlayerEndpoint {
     }
 
     @POST
-    @Path("/{id}")
+    @Path("/{player}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Response createPlayer(@PathParam("id") String jsonID) {
-        int id = Integer.parseInt(jsonID);
-        Player player = playerRepository.getPlayer(id);
+    public Response createPlayer(@PathParam("player") String jsonPlayer) {
+        Player player = serializer.deserialize(jsonPlayer, Player.class);
         try {
-            return ResponseBuilder.response(serializer.serialize(player));
+            playerRepository.addNewPlayer(player);
+            return ResponseBuilder.response(serializer.serialize(playerRepository.getPlayer(player.getId())));
         } catch (Exception e) {
 
             return ResponseBuilder.response("Something went wrong", 500);
@@ -65,13 +61,14 @@ public class PlayerEndpoint {
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("/{player}")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Response updatePlayer(@PathParam("id") String jsonID) {
-        int id = Integer.parseInt(jsonID);
-        Player player = playerRepository.getPlayer(id);
+    public Response updatePlayer(@PathParam("player") String jsonPlayer) {
+        Player player = serializer.deserialize(jsonPlayer, Player.class);
         try {
-            return ResponseBuilder.response(serializer.serialize(player));
+            playerRepository.updatePlayer(player);
+            return ResponseBuilder.response(serializer.serialize(playerRepository.getPlayer(player.getId())));
         } catch (Exception e) {
 
             return ResponseBuilder.response("Something went wrong", 500);
@@ -83,9 +80,9 @@ public class PlayerEndpoint {
     @Produces("application/json")
     public Response deletePlayer(@PathParam("id") String jsonID) {
         int id = Integer.parseInt(jsonID);
-        Player player = playerRepository.getPlayer(id);
         try {
-            return ResponseBuilder.response(serializer.serialize(player));
+            playerRepository.deletePlayer(id);
+            return ResponseBuilder.response("Player with id: " + id + " removed.", 200);
         } catch (Exception e) {
 
             return ResponseBuilder.response("Something went wrong", 500);

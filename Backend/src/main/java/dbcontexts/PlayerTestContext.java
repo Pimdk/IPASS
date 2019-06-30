@@ -20,7 +20,7 @@ public class PlayerTestContext implements PlayerContext {
 
     @Override
     public void createPlayer(Player player) {
-
+        players.add(player);
     }
 
     @Override
@@ -40,11 +40,21 @@ public class PlayerTestContext implements PlayerContext {
 
     @Override
     public void updatePlayer(Player player) {
-
+        for (Player registeredPlayer : players) {
+            if (registeredPlayer.getId() == player.getId()) {
+                registeredPlayer = player;
+                break;
+            }
+        }
     }
 
     @Override
-    public void deletePlayer(Player player) {
-
+    public void deletePlayer(int id) {
+        for (Player registeredPlayer : players) {
+            if (registeredPlayer.getId() == id) {
+                players.remove(players.indexOf(registeredPlayer));
+                break;
+            }
+        }
     }
 }

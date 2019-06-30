@@ -13,5 +13,5 @@ public interface PlayerContext {
 
     void updatePlayer(Player player);
 
-    void deletePlayer(Player player);
+    void deletePlayer(int id);
 }

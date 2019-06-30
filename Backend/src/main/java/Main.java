@@ -3,6 +3,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
+import utils.ResponseFilter;
 import utils.logging.Logger;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
         ResourceConfig config = new ResourceConfig();
         config.packages("endpoints");
+        config.register(new ResponseFilter());
         ServletHolder servletHolder = new ServletHolder(new ServletContainer(config));
 
         Server server = new Server(8091);

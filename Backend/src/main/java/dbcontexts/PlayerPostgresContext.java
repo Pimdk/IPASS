@@ -27,7 +27,7 @@ public class PlayerPostgresContext implements PlayerContext {
     }
 
     @Override
-    public void deletePlayer(Player player) {
+    public void deletePlayer(int id) {
 
     }
 }
