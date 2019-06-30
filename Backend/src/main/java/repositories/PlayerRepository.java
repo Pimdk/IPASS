@@ -12,11 +12,22 @@ public class PlayerRepository {
 
     public PlayerRepository(PlayerContext context) {
         this.context = context;
-        players = new ArrayList<>();
+        players = new ArrayList<>(this.context.getAllPlayers());
     }
 
     public List<Player> getAllPlayers()
     {
-        return context.getAllPlayers();
+        return players;
+    }
+
+    public boolean addNewPlayer(Player player)
+    {
+        for (Player registeredPlayer: players) {
+           if(registeredPlayer.getForname().equalsIgnoreCase(player.getForname()) && registeredPlayer.getSurname().equalsIgnoreCase(player.getSurname()) && registeredPlayer.getBirthday().equals(player.getBirthday()))
+           {
+               return false;
+           }
+           else 
+        }
     }
 }

@@ -1,5 +1,8 @@
 package endpoints;
 
+import dbcontexts.PlayerPostgresContext;
+import models.Player;
+import repositories.PlayerRepository;
 import utils.ResponseBuilder;
 import utils.logging.Logger;
 
@@ -13,12 +16,13 @@ import java.util.ArrayList;
 
 @Path("/player")
 public class PlayerEndpoint {
+    private PlayerRepository playerRepository = new PlayerRepository(new PlayerPostgresContext());
 
     @GET
     @Path("/get")
     @Produces("application/json")
     public Response getAllPlayers(){
-        ArrayList<Episode> episodes = new ArrayList<>(repository.getAll(Episode.class, -1));
+        ArrayList<Player> players = new ArrayList<>(playerRepository.getAllPlayers());
         try {
             return ResponseBuilder.response(Serializer.getInstance().writeValueAsString(episodes));
         } catch (JsonProcessingException e) {

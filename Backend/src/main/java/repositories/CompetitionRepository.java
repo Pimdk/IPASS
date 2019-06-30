@@ -12,11 +12,11 @@ public class CompetitionRepository {
 
     public CompetitionRepository(CompetitionContext context) {
         this.context = context;
-        competitions = new ArrayList<>();
+        competitions = new ArrayList<>(this.context.getAllCompetitions());
     }
 
-    public List<Competition> getCompetitions()
+    public List<Competition> getAllCompetitions()
     {
-        return context.getAllCompetitions();
+        return competitions;
     }
 }
