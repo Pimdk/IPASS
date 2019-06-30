@@ -90,19 +90,14 @@ public class PlayerPostgresContext extends PostgresBaseDao implements PlayerCont
     }
 
     @Override
-<<<<<<< HEAD
-    public void deletePlayer(Player player) {
+    public void deletePlayer(int id) {
         try(Connection con = super.getConnection()){
-            String query = "DELETE From Speler WHERE SpelerID = "+player.getId()+";";
+            String query = "DELETE From Speler WHERE SpelerID = "+ id +";";
             PreparedStatement prpst = con.prepareStatement(query);
             prpst.executeQuery();
         }
         catch (SQLException sqle){
             sqle.printStackTrace();
         }
-=======
-    public void deletePlayer(int id) {
-
->>>>>>> 979c32f6a1879691bc86bdae0d826f08cbcb2a5d
     }
 }
