@@ -14,15 +14,20 @@ public class Main {
         config.packages("endpoints");
         ServletHolder servletHolder = new ServletHolder(new ServletContainer(config));
 
-        Server server = new Server(8090);
+        Server server = new Server(8091);
         ServletContextHandler contextHandler = new ServletContextHandler(server, "/*");
         contextHandler.addServlet(servletHolder, "/*");
 
         try {
+            System.out.println("[Websocket Server Started] URI = " + server.getURI());
             server.start();
+
             server.join();
         } catch (Exception e) {
             Logger.getInstance().log(e);
+        }
+        finally {
+            server.destroy();
         }
     }
 }

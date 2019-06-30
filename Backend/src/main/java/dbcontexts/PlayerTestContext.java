@@ -2,6 +2,7 @@ package dbcontexts;
 
 import models.Player;
 
+import java.util.Date;
 import java.util.List;
 
 public class PlayerTestContext implements PlayerContext {
@@ -12,7 +13,8 @@ public class PlayerTestContext implements PlayerContext {
 
     @Override
     public Player readPlayer(int id) {
-        return null;
+        Player player = new Player(1, "nick", "thijssen", "male", new Date(), "nickthijssen1994", "nickthijssen1994@gmail.com");
+        return player;
     }
 
     @Override

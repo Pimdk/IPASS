@@ -1,54 +1,60 @@
 package endpoints;
 
-import dbcontexts.PlayerPostgresContext;
+import dbcontexts.PlayerTestContext;
 import models.Player;
 import repositories.PlayerRepository;
 import utils.ResponseBuilder;
-import utils.logging.Logger;
+import utils.serialization.Serializer;
+import utils.serialization.SerializerSingleton;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.annotation.security.PermitAll;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
 import java.util.ArrayList;
 
 @Path("/player")
 public class PlayerEndpoint {
-    private PlayerRepository playerRepository = new PlayerRepository(new PlayerPostgresContext());
+    private PlayerRepository playerRepository = new PlayerRepository(new PlayerTestContext());
+    private Serializer<String> serializer = SerializerSingleton.getInstance();
+
+    @OPTIONS
+    @PermitAll
+    public Response options(){
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
+
+    @GET
+    @Path("/test")
+    public Response testConnection()
+    {
+        return ResponseBuilder.response("Test");
+    }
 
     @GET
     @Path("/get")
     @Produces("application/json")
-    public Response getAllPlayers(){
+    public Response getAllPlayers() {
         ArrayList<Player> players = new ArrayList<>(playerRepository.getAllPlayers());
         try {
-            return ResponseBuilder.response(Serializer.getInstance().writeValueAsString(episodes));
-        } catch (JsonProcessingException e) {
-            Logger.getInstance().log(e);
+            return ResponseBuilder.response(serializer.serialize(players));
+        }
+        catch (Exception e)
+        {
             return ResponseBuilder.response("Something went wrong", 500);
         }
     }
 
-    @POST
-    @Path("/create")
+    @GET
+    @Path("/get/{id}")
     @Produces("application/json")
-    public Response createPlayer(String jsonPlayer) {
-        Episode episode;
+    public Response getPlayer(@PathParam("id") String jsonID) {
+        int id = Integer.parseInt(jsonID);
+        Player player = playerRepository.getPlayer(id);
         try {
-            episode = Serializer.getInstance().readValue(jsonEpisode, Episode.class);
-            repository.add(episode);
-        } catch (IOException e) {
-            Logger.getInstance().log(e);
-            return ResponseBuilder.response("Could not read JSON", 500);
-        }
+            return ResponseBuilder.response(serializer.serialize(player));
+        } catch (Exception e) {
 
-        try {
-            return ResponseBuilder.response(Serializer.getInstance().writeValueAsString(episode));
-        } catch (JsonProcessingException e) {
-            Logger.getInstance().log(e);
-            return ResponseBuilder.response("Could not write JSON", 500);
+            return ResponseBuilder.response("Something went wrong", 500);
         }
     }
 }
