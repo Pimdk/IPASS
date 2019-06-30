@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7145d01d-75b0-404e-98ff-1f57ebf13da7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerPostgresContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerPostgresContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerTestContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dbcontexts/PlayerTestContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/endpoints/PlayerEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/endpoints/PlayerEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repositories/PlayerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repositories/PlayerRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="7145d01d-75b0-404e-98ff-1f57ebf13da7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
@@ -29,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/endpoints/PlayerEndpoint.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-157">
@@ -100,7 +93,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/repositories/PlayerRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
@@ -155,8 +148,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dbcontexts/PlayerPostgresContext.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+            <state relative-caret-position="1662">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -248,7 +241,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -464,15 +457,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561898527106</updated>
-      <workItem from="1561898530371" duration="17931000" />
+      <workItem from="1561898530371" duration="18542000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17931000" />
+    <option name="totallyTimeSpent" value="18542000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" />
@@ -854,8 +847,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dbcontexts/PlayerPostgresContext.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+        <state relative-caret-position="1662">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -895,18 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/endpoints/PlayerEndpoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/repositories/PlayerRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -917,6 +898,18 @@
             <element signature="e#260#261#0" expanded="true" />
             <element signature="e#303#304#0" expanded="true" />
             <element signature="e#349#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/endpoints/PlayerEndpoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-157">
+          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
           </folding>
         </state>
       </provider>
