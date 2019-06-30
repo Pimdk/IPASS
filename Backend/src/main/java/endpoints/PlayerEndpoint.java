@@ -7,8 +7,10 @@ import utils.ResponseBuilder;
 import utils.serialization.Serializer;
 import utils.serialization.SerializerSingleton;
 
-import javax.annotation.security.PermitAll;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 
@@ -17,17 +19,11 @@ public class PlayerEndpoint {
     private PlayerRepository playerRepository = new PlayerRepository(new PlayerTestContext());
     private Serializer<String> serializer = SerializerSingleton.getInstance();
 
-    @OPTIONS
-    @PermitAll
-    public Response options(){
-        return Response.status(Response.Status.NO_CONTENT).build();
-    }
-
     @GET
     @Path("/test")
     public Response testConnection()
     {
-        return ResponseBuilder.response("Test");
+        return ResponseBuilder.response("Player Endpoint Connection Successful");
     }
 
     @GET

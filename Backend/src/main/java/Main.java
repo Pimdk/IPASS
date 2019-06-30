@@ -8,7 +8,7 @@ import utils.logging.Logger;
 public class Main {
 
     public static void main(String[] args) {
-        System.setProperty("org.eclipse.jetty.util.log.class", "org.eclipse.jetty.util.log.StdErrLog");
+//        System.setProperty("org.eclipse.jetty.util.log.class", "org.eclipse.jetty.util.log.StdErrLog");
 
         ResourceConfig config = new ResourceConfig();
         config.packages("endpoints");
