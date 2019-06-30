@@ -12,6 +12,11 @@ public class TeamRepository {
 
     public TeamRepository(TeamContext context) {
         this.context = context;
-        teams = new ArrayList<>();
+        teams = new ArrayList<>(context.getAllTeams());
+    }
+
+    public List<Team> getAllTeams()
+    {
+        return teams;
     }
 }
