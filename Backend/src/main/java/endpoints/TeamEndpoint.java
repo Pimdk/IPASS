@@ -10,7 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path("/team")
+@Path("/teams")
 public class TeamEndpoint {
     private TeamRepository teamRepository = new TeamRepository(new TeamTestContext());
     private Serializer<String> serializer = SerializerSingleton.getInstance();

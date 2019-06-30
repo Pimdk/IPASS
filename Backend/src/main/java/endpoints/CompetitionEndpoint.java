@@ -10,7 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path("/competition")
+@Path("/competitions")
 public class CompetitionEndpoint {
     private CompetitionRepository competitionRepository = new CompetitionRepository(new CompetitionTestContext());
     private Serializer<String> serializer = SerializerSingleton.getInstance();
