@@ -1,5 +1,0 @@
-package pim.hu.IPASS.domain;
-
-public class PostgresBaseDAO {
-
-}
